@@ -10,6 +10,10 @@ class Pilgrim extends Model
 {
     use HasFactory, HasUuids;
 
+    /**
+     * Kolom yang boleh diisi secara massal.
+     * photo_path WAJIB ada di sini agar tersimpan ke DB.
+     */
     protected $fillable = [
         'name',
         'passport_number',
@@ -18,8 +22,12 @@ class Pilgrim extends Model
         'hotel_name',
         'check_in',
         'check_out',
+        'photo_path', // <--- TAMBAHAN PENTING
     ];
 
+    /**
+     * Agar kolom public ID yang digunakan adalah 'uuid'
+     */
     public function uniqueIds(): array
     {
         return ['uuid'];
@@ -27,8 +35,6 @@ class Pilgrim extends Model
 
     /**
      * Route Model Binding Customization.
-     * Saat panggil route: /scan/{pilgrim}, Laravel otomatis cari by uuid.
-     * Clean Code: Controller jadi lebih bersih.
      */
     public function getRouteKeyName(): string
     {
@@ -37,8 +43,6 @@ class Pilgrim extends Model
 
     /**
      * Type Casting.
-     * Mengubah data database menjadi tipe data PHP native yang sesuai.
-     * Memudahkan manipulasi tanggal di Blade View (UI/UX).
      */
     protected function casts(): array
     {

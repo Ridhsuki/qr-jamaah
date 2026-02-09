@@ -3,23 +3,34 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Pilgrim;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
      * Seed the application's database.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // 1. Buat 1 Akun Admin Tetap (Agar kita tahu loginnya apa)
+        // Kita gunakan firstOrCreate agar tidak error jika di-seed ulang
+        User::firstOrCreate(
+            ['email' => 'admin@gmail.com'],
+            [
+                'name' => 'Super Admin',
+                'password' => Hash::make('password'),
+                'email_verified_at' => now(),
+            ]
+        );
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // 2. Buat 50 Data Dummy Jamaah Haji
+        // Menggunakan Factory yang sudah kita buat sebelumnya
+        Pilgrim::factory(50)->create();
+
+        // Output info di terminal
+        $this->command->info('Admin user created: admin@gmail.com / password');
+        $this->command->info('50 Dummy Pilgrims created.');
     }
 }

@@ -12,7 +12,9 @@ return new class extends Migration {
     {
         Schema::create('pilgrims', function (Blueprint $table) {
             $table->id();
-            $table->uuid('public_id')->unique()->index();
+
+            $table->uuid('uuid')->unique()->index();
+
             $table->string('name');
             $table->string('passport_number')->unique();
             $table->string('umrah_id')->unique();
@@ -20,6 +22,7 @@ return new class extends Migration {
             $table->string('hotel_name');
             $table->date('check_in');
             $table->date('check_out');
+            $table->string('photo_path')->nullable();
 
             $table->timestamps();
         });

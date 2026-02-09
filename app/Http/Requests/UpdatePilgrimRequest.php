@@ -29,10 +29,18 @@ class UpdatePilgrimRequest extends FormRequest
                 Rule::unique('pilgrims')->ignore($this->pilgrim)
             ],
             'ppiu' => ['required', 'string', 'max:255'],
-            'hotel_name' => ['required', 'string', 'max:255'],
-            'check_in' => ['required', 'date'],
-            'check_out' => ['required', 'date', 'after:check_in'],
-            'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
+            'hotel_madinah_name' => ['nullable', 'string'],
+            'hotel_madinah_check_in' => ['nullable', 'date'],
+            'hotel_madinah_check_out' => ['nullable', 'date', 'after_or_equal:hotel_madinah_check_in'],
+            'hotel_makkah_name' => ['nullable', 'string'],
+            'hotel_makkah_check_in' => ['nullable', 'date'],
+            'hotel_makkah_check_out' => ['nullable', 'date', 'after_or_equal:hotel_makkah_check_in'],
+            'photo' => [
+                'nullable',
+                'image',
+                'mimetypes:image/jpeg,image/png,image/jpg,image/webp,image/avif,image/heic',
+                'max:2048'
+            ],
         ];
     }
 }

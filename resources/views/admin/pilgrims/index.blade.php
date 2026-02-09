@@ -130,12 +130,48 @@
                                         <div class="text-sm text-gray-500">Paspor: {{ $pilgrim->passport_number }}
                                         </div>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{ $pilgrim->hotel_name }}</div>
-                                        <span
-                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
-                                            Check-in: {{ $pilgrim->check_in->format('d M Y') }}
-                                        </span>
+                                    <td class="px-6 py-4 whitespace-nowrap align-top">
+                                        <div class="space-y-2 min-h-[64px] flex flex-col justify-between">
+                                            @if ($pilgrim->hotel_madinah_name)
+                                                <div class="flex flex-col">
+                                                    <div class="flex items-center gap-1.5">
+                                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"
+                                                            title="Madinah"></span>
+                                                        <span
+                                                            class="text-sm font-semibold text-gray-900 truncate max-w-[150px]">
+                                                            {{ $pilgrim->hotel_madinah_name }}
+                                                        </span>
+                                                    </div>
+                                                    <div class="text-[10px] text-gray-500 ml-3">
+                                                        {{ $pilgrim->hotel_madinah_check_in?->format('d M') }} -
+                                                        {{ $pilgrim->hotel_madinah_check_out?->format('d M y') }}
+                                                    </div>
+                                                </div>
+                                            @endif
+
+                                            @if ($pilgrim->hotel_makkah_name)
+                                                <div class="flex flex-col border-t border-gray-100 pt-1">
+                                                    <div class="flex items-center gap-1.5">
+                                                        <span class="w-1.5 h-1.5 rounded-full bg-blue-500"
+                                                            title="Makkah"></span>
+                                                        <span
+                                                            class="text-sm font-semibold text-gray-900 truncate max-w-[150px]">
+                                                            {{ $pilgrim->hotel_makkah_name }}
+                                                        </span>
+                                                    </div>
+                                                    <div class="text-[10px] text-gray-500 ml-3">
+                                                        {{ $pilgrim->hotel_makkah_check_in?->format('d M') }} -
+                                                        {{ $pilgrim->hotel_makkah_check_out?->format('d M y') }}
+                                                    </div>
+                                                </div>
+                                            @endif
+
+                                            @if (!$pilgrim->hotel_madinah_name && !$pilgrim->hotel_makkah_name)
+                                                <span class="text-xs text-gray-400 italic">
+                                                    Data hotel belum diisi
+                                                </span>
+                                            @endif
+                                        </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                         <div class="flex justify-center space-x-2">

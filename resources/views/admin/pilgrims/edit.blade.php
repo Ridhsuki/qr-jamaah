@@ -19,9 +19,10 @@
                         <div class="md:col-span-2">
                             <x-input-label for="photo" :value="__('Foto Jamaah')" />
 
-                            @if($pilgrim->photo_path)
+                            @if ($pilgrim->photo_path)
                                 <div class="mt-2 mb-3 flex items-center gap-4">
-                                    <img src="{{ asset('storage/' . $pilgrim->photo_path) }}" alt="Foto Saat Ini" class="h-20 w-20 object-cover rounded-full border border-gray-300 shadow-sm">
+                                    <img src="{{ asset('storage/' . $pilgrim->photo_path) }}" alt="Foto Saat Ini"
+                                        class="h-20 w-20 object-cover rounded-full border border-gray-300 shadow-sm">
                                     <span class="text-xs text-gray-500">Foto saat ini</span>
                                 </div>
                             @endif
@@ -33,54 +34,114 @@
                                 file:text-sm file:font-semibold
                                 file:bg-blue-50 file:text-blue-700
                                 hover:file:bg-blue-100
-                                border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500"
-                            />
+                                border border-gray-300 rounded-md focus:ring-emerald-500 focus:border-emerald-500" />
                             <p class="mt-1 text-xs text-gray-500">Biarkan kosong jika tidak ingin mengganti foto.</p>
                             <x-input-error :messages="$errors->get('photo')" class="mt-2" />
                         </div>
 
                         <div class="md:col-span-2">
                             <x-input-label for="name" :value="__('Nama Lengkap')" />
-                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $pilgrim->name)" required />
+                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
+                                :value="old('name', $pilgrim->name)" required />
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         </div>
 
                         <div class="md:col-span-2">
                             <x-input-label for="ppiu" :value="__('Agen Travel (PPIU)')" />
-                            <x-text-input id="ppiu" class="block mt-1 w-full" type="text" name="ppiu" :value="old('ppiu', $pilgrim->ppiu)" required />
+                            <x-text-input id="ppiu" class="block mt-1 w-full" type="text" name="ppiu"
+                                :value="old('ppiu', $pilgrim->ppiu)" required />
                             <x-input-error :messages="$errors->get('ppiu')" class="mt-2" />
                         </div>
 
                         <div>
                             <x-input-label for="umrah_id" :value="__('Nomor Porsi / ID Umrah')" />
-                            <x-text-input id="umrah_id" class="block mt-1 w-full" type="text" name="umrah_id" :value="old('umrah_id', $pilgrim->umrah_id)" required />
+                            <x-text-input id="umrah_id" class="block mt-1 w-full" type="text" name="umrah_id"
+                                :value="old('umrah_id', $pilgrim->umrah_id)" required />
                             <x-input-error :messages="$errors->get('umrah_id')" class="mt-2" />
                         </div>
 
                         <div>
                             <x-input-label for="passport_number" :value="__('Nomor Paspor')" />
-                            <x-text-input id="passport_number" class="block mt-1 w-full" type="text" name="passport_number" :value="old('passport_number', $pilgrim->passport_number)" required />
+                            <x-text-input id="passport_number" class="block mt-1 w-full" type="text"
+                                name="passport_number" :value="old('passport_number', $pilgrim->passport_number)" required />
                             <x-input-error :messages="$errors->get('passport_number')" class="mt-2" />
                         </div>
 
-                        <div class="md:col-span-2">
-                            <x-input-label for="hotel_name" :value="__('Nama Hotel')" />
-                            <x-text-input id="hotel_name" class="block mt-1 w-full" type="text" name="hotel_name" :value="old('hotel_name', $pilgrim->hotel_name)" required />
-                            <x-input-error :messages="$errors->get('hotel_name')" class="mt-2" />
+                        <div class="bg-gray-50 p-5 rounded-lg border border-gray-200">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-sm font-bold text-emerald-700 uppercase">Madinah</h4>
+                                <span class="text-[10px] text-gray-400 uppercase">Opsional</span>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div>
+                                    <x-input-label for="hotel_madinah_name" :value="__('Nama Hotel')" />
+                                    <x-text-input id="hotel_madinah_name" name="hotel_madinah_name" type="text"
+                                        class="mt-1 block w-full" :value="old('hotel_madinah_name', $pilgrim->hotel_madinah_name)" />
+                                    <x-input-error :messages="$errors->get('hotel_madinah_name')" class="mt-2" />
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <x-input-label for="hotel_madinah_check_in" :value="__('Check In')" />
+                                        <x-text-input id="hotel_madinah_check_in" name="hotel_madinah_check_in"
+                                            type="date" class="mt-1 block w-full" :value="old(
+                                                'hotel_madinah_check_in',
+                                                $pilgrim->hotel_madinah_check_in?->format('Y-m-d'),
+                                            )" />
+                                        <x-input-error :messages="$errors->get('hotel_madinah_check_in')" class="mt-2" />
+                                    </div>
+
+                                    <div>
+                                        <x-input-label for="hotel_madinah_check_out" :value="__('Check Out')" />
+                                        <x-text-input id="hotel_madinah_check_out" name="hotel_madinah_check_out"
+                                            type="date" class="mt-1 block w-full" :value="old(
+                                                'hotel_madinah_check_out',
+                                                $pilgrim->hotel_madinah_check_out?->format('Y-m-d'),
+                                            )" />
+                                        <x-input-error :messages="$errors->get('hotel_madinah_check_out')" class="mt-2" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div>
-                            <x-input-label for="check_in" :value="__('Tanggal Check In')" />
-                            <x-text-input id="check_in" class="block mt-1 w-full" type="date" name="check_in" :value="old('check_in', $pilgrim->check_in->format('Y-m-d'))" required />
-                            <x-input-error :messages="$errors->get('check_in')" class="mt-2" />
-                        </div>
+                        <div class="bg-gray-50 p-5 rounded-lg border border-gray-200">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-sm font-bold text-blue-700 uppercase">Makkah</h4>
+                                <span class="text-[10px] text-gray-400 uppercase">Opsional</span>
+                            </div>
 
-                        <div>
-                            <x-input-label for="check_out" :value="__('Tanggal Check Out')" />
-                            <x-text-input id="check_out" class="block mt-1 w-full" type="date" name="check_out" :value="old('check_out', $pilgrim->check_out->format('Y-m-d'))" required />
-                            <x-input-error :messages="$errors->get('check_out')" class="mt-2" />
-                        </div>
+                            <div class="space-y-4">
+                                <div>
+                                    <x-input-label for="hotel_makkah_name" :value="__('Nama Hotel')" />
+                                    <x-text-input id="hotel_makkah_name" name="hotel_makkah_name" type="text"
+                                        class="mt-1 block w-full" :value="old('hotel_makkah_name', $pilgrim->hotel_makkah_name)" />
+                                    <x-input-error :messages="$errors->get('hotel_makkah_name')" class="mt-2" />
+                                </div>
 
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <x-input-label for="hotel_makkah_check_in" :value="__('Check In')" />
+                                        <x-text-input id="hotel_makkah_check_in" name="hotel_makkah_check_in"
+                                            type="date" class="mt-1 block w-full" :value="old(
+                                                'hotel_makkah_check_in',
+                                                $pilgrim->hotel_makkah_check_in?->format('Y-m-d'),
+                                            )" />
+                                        <x-input-error :messages="$errors->get('hotel_makkah_check_in')" class="mt-2" />
+                                    </div>
+
+                                    <div>
+                                        <x-input-label for="hotel_makkah_check_out" :value="__('Check Out')" />
+                                        <x-text-input id="hotel_makkah_check_out" name="hotel_makkah_check_out"
+                                            type="date" class="mt-1 block w-full" :value="old(
+                                                'hotel_makkah_check_out',
+                                                $pilgrim->hotel_makkah_check_out?->format('Y-m-d'),
+                                            )" />
+                                        <x-input-error :messages="$errors->get('hotel_makkah_check_out')" class="mt-2" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="flex items-center justify-end mt-6">
@@ -88,7 +149,8 @@
                             {{ __('Batal') }}
                         </x-secondary-button>
 
-                        <x-primary-button class="bg-emerald-600 hover:bg-emerald-700 focus:bg-emerald-700 active:bg-emerald-900">
+                        <x-primary-button
+                            class="bg-emerald-600 hover:bg-emerald-700 focus:bg-emerald-700 active:bg-emerald-900">
                             {{ __('Update Data') }}
                         </x-primary-button>
                     </div>

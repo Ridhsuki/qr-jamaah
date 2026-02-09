@@ -23,8 +23,8 @@
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 text-center">
                         <div class="relative inline-block">
                             @if ($pilgrim->photo_path)
-                                <img class="h-40 w-40 rounded-full object-cover shadow-lg border-4 border-emerald-50 mx-auto" loading="lazy"
-                                    src="{{ asset('storage/' . $pilgrim->photo_path) }}"
+                                <img class="h-40 w-40 rounded-full object-cover shadow-lg border-4 border-emerald-50 mx-auto"
+                                    loading="lazy" src="{{ asset('storage/' . $pilgrim->photo_path) }}"
                                     alt="Foto {{ $pilgrim->name }}">
                             @else
                                 <img class="h-40 w-40 rounded-full object-cover shadow-lg border-4 border-gray-50 mx-auto"
@@ -121,48 +121,40 @@
                         </div>
                     </div>
 
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50">
-                            <h3 class="text-lg font-semibold text-gray-800">Akomodasi & Jadwal</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-emerald-50 border border-emerald-100 shadow-sm sm:rounded-lg p-5">
+                            <h4 class="text-emerald-700 font-bold uppercase text-xs tracking-widest mb-3">Hotel Madinah
+                            </h4>
+                            <p class="text-lg font-bold text-gray-800 mb-4">{{ $pilgrim->hotel_madinah_name ?: '-' }}
+                            </p>
+                            <div class="flex justify-between text-sm bg-white p-3 rounded shadow-sm">
+                                <div>
+                                    <span class="block text-[10px] text-gray-400 uppercase">Check In</span>
+                                    <span
+                                        class="font-bold">{{ $pilgrim->hotel_madinah_check_in?->format('d M Y') ?: '-' }}</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="block text-[10px] text-gray-400 uppercase">Check Out</span>
+                                    <span
+                                        class="font-bold">{{ $pilgrim->hotel_madinah_check_out?->format('d M Y') ?: '-' }}</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="p-6">
-                            <div class="bg-blue-50 rounded-xl p-5 border border-blue-100">
-                                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
 
-                                    <div>
-                                        <p class="text-xs font-bold text-blue-500 uppercase tracking-wider mb-1">Lokasi
-                                            Hotel</p>
-                                        <div class="flex items-center gap-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-700"
-                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                                            </svg>
-                                            <span
-                                                class="text-xl font-bold text-gray-800">{{ $pilgrim->hotel_name }}</span>
-                                        </div>
-                                    </div>
-
-                                    <div
-                                        class="flex items-center bg-white rounded-lg p-1 shadow-sm border border-blue-100">
-                                        <div class="px-4 py-2 text-center border-r border-gray-100">
-                                            <span class="block text-[10px] text-gray-400 font-bold uppercase">Check
-                                                In</span>
-                                            <span
-                                                class="block text-lg font-bold text-gray-800 leading-none mt-1">{{ $pilgrim->check_in->format('d') }}</span>
-                                            <span
-                                                class="text-xs font-medium text-gray-500 uppercase">{{ $pilgrim->check_in->format('M Y') }}</span>
-                                        </div>
-                                        <div class="px-4 py-2 text-center">
-                                            <span class="block text-[10px] text-gray-400 font-bold uppercase">Check
-                                                Out</span>
-                                            <span
-                                                class="block text-lg font-bold text-gray-800 leading-none mt-1">{{ $pilgrim->check_out->format('d') }}</span>
-                                            <span
-                                                class="text-xs font-medium text-gray-500 uppercase">{{ $pilgrim->check_out->format('M Y') }}</span>
-                                        </div>
-                                    </div>
-
+                        <div class="bg-blue-50 border border-blue-100 shadow-sm sm:rounded-lg p-5">
+                            <h4 class="text-blue-700 font-bold uppercase text-xs tracking-widest mb-3">Hotel Makkah</h4>
+                            <p class="text-lg font-bold text-gray-800 mb-4">{{ $pilgrim->hotel_makkah_name ?: '-' }}
+                            </p>
+                            <div class="flex justify-between text-sm bg-white p-3 rounded shadow-sm">
+                                <div>
+                                    <span class="block text-[10px] text-gray-400 uppercase">Check In</span>
+                                    <span
+                                        class="font-bold">{{ $pilgrim->hotel_makkah_check_in?->format('d M Y') ?: '-' }}</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="block text-[10px] text-gray-400 uppercase">Check Out</span>
+                                    <span
+                                        class="font-bold">{{ $pilgrim->hotel_makkah_check_out?->format('d M Y') ?: '-' }}</span>
                                 </div>
                             </div>
                         </div>

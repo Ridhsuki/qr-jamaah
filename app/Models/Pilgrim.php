@@ -19,10 +19,13 @@ class Pilgrim extends Model
         'passport_number',
         'umrah_id',
         'ppiu',
-        'hotel_name',
-        'check_in',
-        'check_out',
-        'photo_path', // <--- TAMBAHAN PENTING
+        'hotel_madinah_name',
+        'hotel_madinah_check_in',
+        'hotel_madinah_check_out',
+        'hotel_makkah_name',
+        'hotel_makkah_check_in',
+        'hotel_makkah_check_out',
+        'photo_path'
     ];
 
     /**
@@ -47,8 +50,10 @@ class Pilgrim extends Model
     protected function casts(): array
     {
         return [
-            'check_in' => 'date',
-            'check_out' => 'date',
+            'hotel_madinah_check_in' => 'date',
+            'hotel_madinah_check_out' => 'date',
+            'hotel_makkah_check_in' => 'date',
+            'hotel_makkah_check_out' => 'date',
         ];
     }
 }

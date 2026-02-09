@@ -57,25 +57,68 @@
                             <x-input-error :messages="$errors->get('passport_number')" class="mt-2" />
                         </div>
 
-                        <div class="md:col-span-2">
-                            <x-input-label for="hotel_name" :value="__('Nama Hotel')" />
-                            <x-text-input id="hotel_name" class="block mt-1 w-full" type="text" name="hotel_name"
-                                :value="old('hotel_name')" required />
-                            <x-input-error :messages="$errors->get('hotel_name')" class="mt-2" />
+                        <div class="bg-gray-50 p-5 rounded-lg border border-gray-200">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-sm font-bold text-emerald-700 uppercase">Madinah</h4>
+                                <span class="text-[10px] text-gray-400 uppercase">Opsional</span>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div>
+                                    <x-input-label for="hotel_madinah_name" :value="__('Nama Hotel')" />
+                                    <x-text-input id="hotel_madinah_name" name="hotel_madinah_name" type="text"
+                                        class="mt-1 block w-full" :value="old('hotel_madinah_name')" />
+                                    <x-input-error :messages="$errors->get('hotel_madinah_name')" class="mt-2" />
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <x-input-label for="hotel_madinah_check_in" :value="__('Check In')" />
+                                        <x-text-input id="hotel_madinah_check_in" name="hotel_madinah_check_in"
+                                            type="date" class="mt-1 block w-full" :value="old('hotel_madinah_check_in')" />
+                                        <x-input-error :messages="$errors->get('hotel_madinah_check_in')" class="mt-2" />
+                                    </div>
+
+                                    <div>
+                                        <x-input-label for="hotel_madinah_check_out" :value="__('Check Out')" />
+                                        <x-text-input id="hotel_madinah_check_out" name="hotel_madinah_check_out"
+                                            type="date" class="mt-1 block w-full" :value="old('hotel_madinah_check_out')" />
+                                        <x-input-error :messages="$errors->get('hotel_madinah_check_out')" class="mt-2" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div>
-                            <x-input-label for="check_in" :value="__('Tanggal Check In')" />
-                            <x-text-input id="check_in" class="block mt-1 w-full" type="date" name="check_in"
-                                :value="old('check_in')" required />
-                            <x-input-error :messages="$errors->get('check_in')" class="mt-2" />
-                        </div>
+                        <div class="bg-gray-50 p-5 rounded-lg border border-gray-200">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-sm font-bold text-blue-700 uppercase">Makkah</h4>
+                                <span class="text-[10px] text-gray-400 uppercase">Opsional</span>
+                            </div>
 
-                        <div>
-                            <x-input-label for="check_out" :value="__('Tanggal Check Out')" />
-                            <x-text-input id="check_out" class="block mt-1 w-full" type="date" name="check_out"
-                                :value="old('check_out')" required />
-                            <x-input-error :messages="$errors->get('check_out')" class="mt-2" />
+                            <div class="space-y-4">
+                                <div>
+                                    <x-input-label for="hotel_makkah_name" :value="__('Nama Hotel')" />
+                                    <x-text-input id="hotel_makkah_name" name="hotel_makkah_name" type="text"
+                                        class="mt-1 block w-full" :value="old('hotel_makkah_name')" />
+                                    <x-input-error :messages="$errors->get('hotel_makkah_name')" class="mt-2" />
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <x-input-label for="hotel_makkah_check_in" :value="__('Check In')" />
+                                        <x-text-input id="hotel_makkah_check_in" name="hotel_makkah_check_in"
+                                            type="date" class="mt-1 block w-full" :value="old('hotel_makkah_check_in')" />
+                                        <x-input-error :messages="$errors->get('hotel_makkah_check_in')" class="mt-2" />
+                                    </div>
+
+                                    <div>
+                                        <x-input-label for="hotel_makkah_check_out" :value="__('Check Out')" />
+                                        <x-text-input id="hotel_makkah_check_out" name="hotel_makkah_check_out"
+                                            type="date" class="mt-1 block w-full" :value="old('hotel_makkah_check_out')" />
+                                        <x-input-error :messages="$errors->get('hotel_makkah_check_out')" class="mt-2" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>

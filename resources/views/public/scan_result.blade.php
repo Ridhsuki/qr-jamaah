@@ -43,8 +43,6 @@
             <div class="mb-2">
                 <img src="{{ asset('assets/img/kaba.png') }}" alt="Kaba" class="h-10 w-10 object-contain">
             </div>
-
-
             <h1 class="text-xl md:text-2xl font-bold uppercase tracking-wide leading-tight">
                 Informasi Dan Sertifikat Vaksin Jamaah Umrah
             </h1>
@@ -103,24 +101,39 @@
                         <div class="value-text md:col-span-2 uppercase">: {{ $pilgrim->ppiu }}</div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 pt-2">
-                        <div class="label-text md:col-span-1">Hotel <br><span
-                                class="text-xs font-normal italic text-gray-400">Hotel</span></div>
-                        <div class="value-text md:col-span-2">
-                            <div class="mb-2">
-                                <span class="block text-gray-800 uppercase">: {{ $pilgrim->hotel_name }}</span>
-                                <span class="text-sm text-gray-500 font-normal">
-                                    (Check-in: {{ $pilgrim->check_in->format('d/m/Y') }} - Check-out:
-                                    {{ $pilgrim->check_out->format('d/m/Y') }})
-                                </span>
+                    <div class="md:w-2/3 w-full">
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-3 pt-2">
+                                <div class="label-text md:col-span-1 text-emerald-700">Hotel Madinah<br><span
+                                        class="text-[10px] font-normal italic text-gray-400">Madinah
+                                        Accommodation</span></div>
+                                <div class="value-text md:col-span-2">
+                                    : {{ $pilgrim->hotel_madinah_name ?? '-' }}
+                                    @if ($pilgrim->hotel_madinah_check_in)
+                                        <span class="block text-xs text-gray-500 font-normal">
+                                            ({{ $pilgrim->hotel_madinah_check_in->format('d/m/Y') }} -
+                                            {{ $pilgrim->hotel_madinah_check_out->format('d/m/Y') }})
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
 
-                            <div class="mt-2 text-gray-400 text-xs font-normal">
-                                * Data akomodasi sesuai sistem
+                            <div class="grid grid-cols-1 md:grid-cols-3 pt-2">
+                                <div class="label-text md:col-span-1 text-blue-700">Hotel Mekkah<br><span
+                                        class="text-[10px] font-normal italic text-gray-400">Makkah Accommodation</span>
+                                </div>
+                                <div class="value-text md:col-span-2">
+                                    : {{ $pilgrim->hotel_makkah_name ?? '-' }}
+                                    @if ($pilgrim->hotel_makkah_check_in)
+                                        <span class="block text-xs text-gray-500 font-normal">
+                                            ({{ $pilgrim->hotel_makkah_check_in->format('d/m/Y') }} -
+                                            {{ $pilgrim->hotel_makkah_check_out->format('d/m/Y') }})
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 

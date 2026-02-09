@@ -19,9 +19,12 @@ return new class extends Migration {
             $table->string('passport_number')->unique();
             $table->string('umrah_id')->unique();
             $table->string('ppiu');
-            $table->string('hotel_name');
-            $table->date('check_in');
-            $table->date('check_out');
+            $table->string('hotel_madinah_name')->nullable();
+            $table->date('hotel_madinah_check_in')->nullable();
+            $table->date('hotel_madinah_check_out')->nullable();
+            $table->string('hotel_makkah_name')->nullable();
+            $table->date('hotel_makkah_check_in')->nullable();
+            $table->date('hotel_makkah_check_out')->nullable();
             $table->string('photo_path')->nullable();
 
             $table->timestamps();

@@ -94,13 +94,50 @@
                         <p class="text-sm font-bold">{{ $pilgrim->ppiu }}</p>
                     </div>
 
-                    <div class="col-span-2 bg-gray-50 p-2 border border-gray-100 rounded-sm mt-1">
-                        <p class="text-[9px] text-gray-500 uppercase font-semibold mb-1">Akomodasi / Hotel</p>
-                        <p class="text-sm font-bold leading-tight">{{ $pilgrim->hotel_name }}</p>
-                        <div class="flex gap-4 mt-1 text-[10px] text-gray-600">
-                            <span>IN: <b>{{ $pilgrim->check_in->format('d/m/Y') }}</b></span>
-                            <span>OUT: <b>{{ $pilgrim->check_out->format('d/m/Y') }}</b></span>
-                        </div>
+                    <div class="mb-6 col-span-2">
+                        <h3 class="font-bold text-xs mb-3 border-b-2 border-black pb-1 uppercase tracking-wide">
+                            Akomodasi / Hotel Info
+                        </h3>
+
+                        <table class="w-full text-[10px] border border-gray-200 border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 border-b border-gray-200">
+                                    <th class="py-2 px-2 text-left text-gray-500 uppercase font-semibold w-1/4">
+                                        Lokasi
+                                    </th>
+                                    <th class="py-2 px-2 text-left text-gray-500 uppercase font-semibold w-2/4">
+                                        Nama Hotel
+                                    </th>
+                                    <th class="py-2 px-2 text-right text-gray-500 uppercase font-semibold w-1/4">
+                                        Check-in / Out
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-2 px-2 font-medium">Madinah</td>
+                                    <td class="py-2 px-2 font-semibold uppercase">
+                                        {{ $pilgrim->hotel_madinah_name ?: '-' }}
+                                    </td>
+                                    <td class="py-2 px-2 text-right font-mono">
+                                        {{ $pilgrim->hotel_madinah_check_in?->format('d/m/y') ?? '-' }}
+                                        —
+                                        {{ $pilgrim->hotel_madinah_check_out?->format('d/m/y') ?? '-' }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-2 font-medium">Mekkah</td>
+                                    <td class="py-2 px-2 font-semibold uppercase">
+                                        {{ $pilgrim->hotel_makkah_name ?: '-' }}
+                                    </td>
+                                    <td class="py-2 px-2 text-right font-mono">
+                                        {{ $pilgrim->hotel_makkah_check_in?->format('d/m/y') ?? '-' }}
+                                        —
+                                        {{ $pilgrim->hotel_makkah_check_out?->format('d/m/y') ?? '-' }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 

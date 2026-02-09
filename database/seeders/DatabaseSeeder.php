@@ -14,22 +14,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Buat 1 Akun Admin Tetap (Agar kita tahu loginnya apa)
-        // Kita gunakan firstOrCreate agar tidak error jika di-seed ulang
         User::firstOrCreate(
             ['email' => 'admin@gmail.com'],
             [
-                'name' => 'Super Admin',
+                'name' => 'Admin',
                 'password' => Hash::make('password'),
                 'email_verified_at' => now(),
             ]
         );
 
-        // 2. Buat 50 Data Dummy Jamaah Haji
-        // Menggunakan Factory yang sudah kita buat sebelumnya
-        Pilgrim::factory(50)->create();
+        Pilgrim::factory(25)->create();
 
-        // Output info di terminal
         $this->command->info('Admin user created: admin@gmail.com / password');
         $this->command->info('50 Dummy Pilgrims created.');
     }
